@@ -93,7 +93,8 @@ PHP_FUNCTION(opencc_open)
 PHP_FUNCTION(opencc_close)
 {
 	//fprintf(stderr, "opencc_close() is not necessary anymore, resource will auto release on php Module shutdown\n");
-	return;
+	// always return true
+	RETURN_TRUE;
 
 	int argc = ZEND_NUM_ARGS();
 	int ob_id = -1;
@@ -101,7 +102,7 @@ PHP_FUNCTION(opencc_close)
 	opencc_t od;
 
 	if (zend_parse_parameters(argc TSRMLS_CC, "r", &zod) == FAILURE) {
-		return;
+		RETURN_TRUE;
 	}
 
 	#if PHP_MAJOR_VERSION < 7
